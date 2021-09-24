@@ -40,7 +40,7 @@ export default () => {
                 userDispatch({
                     type: 'setAvatar',
                     payload: {
-                        avatar: json.data.avatar
+                        avatar: null
                     }
                 });
 
