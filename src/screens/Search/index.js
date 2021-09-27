@@ -26,29 +26,12 @@ export default () => {
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
 
-    // const getBarbers = async () => {
-    //     setLoading(true);
-    //     setList([]);
-
-    //     let res = await Api.getBarbers();
-    //     if(res.error == '') {
-
-    //         setList(res.data);
-    //     } else {
-    //         alert("Erro: "+res.error);
-    //     }
-
-    //     setLoading(false);
-    // }
-
     const getProducts = async () => {
         setLoading(true);
         setList([]);
 
         let res = await Api.getProducts();
-        console.log("RES" + res);
         if (res) {
-            console.log("Itens " + res.itens);
             setList(res.itens);
         } else {
             alert("Erro ao carregar produtos.");

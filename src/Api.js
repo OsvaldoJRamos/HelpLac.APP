@@ -162,17 +162,16 @@ export default {
     },
     postComment: async (productId, commendId, commentDescription) => {
         const token = await AsyncStorage.getItem('token');
-        
+        const body = JSON.stringify({ productId, replyCommentId: commendId, description: commentDescription });
+
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', Authorization: 'bearer ' + token },
-            body: JSON.stringify({ productId: productId, replyCommentId: commendId, description: commentDescription })
+            headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+            body: body
         };
 
-        console.log("REQUEST " + requestOptions);
-
         const req = await fetch(`${baseApiURL}/comment`, requestOptions);
-        const json = await req.json();
-        return json;
+
+        return req.ok;
     }
 };

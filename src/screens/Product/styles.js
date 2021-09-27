@@ -33,12 +33,14 @@ export const SwipeItem = styled.View`
 `;
 
 export const SwipeImage = styled.Image`
-    width: 100%;
-    height: 240px;
+    flex: 1;
+    width: null;
+    height: null;
+    resizeMode: contain;
 `;
 
 export const FakeSwiper = styled.View`
-    height: 140px;
+    height: 400px;
 `;
 
 export const PageBody = styled.View`

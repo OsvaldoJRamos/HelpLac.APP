@@ -61,7 +61,6 @@ const ContaisLactoseWarningText = styled.Text`
 
 
 export default ({ data }) => {
-    console.log("DATA " + data.name)
     const navigation = useNavigation();
 
     const handleClick = () => {
@@ -69,6 +68,7 @@ export default ({ data }) => {
             id: data.id,
             name: data.name,
             image: data.image,
+            imageUrl: data.imageUrl,
             containsLactose: data.containsLactose,
             ingredients: data.ingredients
         });
@@ -76,7 +76,7 @@ export default ({ data }) => {
 
     return (
         <Area onPress={handleClick}>
-            <Avatar source={{ uri: data.image }} />
+            <Avatar source={{ uri: data.imageUrl }} />
             <InfoArea>
                 <UserName>{data.name}</UserName>
                 {data.containsLactose == true ?

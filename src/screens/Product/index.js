@@ -50,6 +50,7 @@ export default () => {
         id: route.params.id,
         name: route.params.name,
         image: route.params.image,
+        imageUrl: route.params.imageUrl,
         containsLactose: route.params.containsLactose,
         ingredients: route.params.ingredients
     });
@@ -87,7 +88,7 @@ export default () => {
     return (
         <Container>
             <Scroller>
-                <FakeSwiper></FakeSwiper>
+                <FakeSwiper><SwipeImage source={{ uri: userInfo.imageUrl }} /></FakeSwiper>
                 <PageBody>
                     {userInfo.containsLactose == false ?
                         <UserInfoArea backgroundColor="#64AF5A">

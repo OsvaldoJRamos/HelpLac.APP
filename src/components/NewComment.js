@@ -65,27 +65,19 @@ export default ({ productId, commentId }) => {
     const navigation = useNavigation();
     const [commentDescription, setCommentDescription] = useState('');
 
-    const handleClick = () => {
-        navigation.navigate('Product', {
-            id: data.id,
-            name: data.name,
-            image: data.image,
-            containsLactose: data.containsLactose,
-            ingredients: data.ingredients
-        });
-    }
-
     const handleClickSendComment = async () => {
-        console.log("productId asdadasd" + productId);
-        console.log("commentId asdadasd" + commentId);
-        console.log("commentDescription asdadasd" + commentDescription);
         let res = await Api.postComment(productId, commentId, commentDescription);
 
-        alert('passou 2');
+        if (res) {
+            alert("Sucesso ao comentar ;)");
+            setCommentDescription('');
+        }
+        else
+            alert("Erro ao comentar ;(");
     }
 
-    return ( 
-        <Container> 
+    return (
+        <Container>
             <Area>
                 <NewCommentArea>
                     <NewCommentTitle>Contribua com a comunidade</NewCommentTitle>
@@ -94,7 +86,7 @@ export default ({ productId, commentId }) => {
                     <WriteCommentArea>
 
                         <CommentInput
-                            placeholder="Escreva sua mensagem"
+                            placeholder=" Escreva sua mensagem"
                             placeholderTextColor="#FFFFFF"
                             value={commentDescription}
                             onChangeText={t => setCommentDescription(t)} />
