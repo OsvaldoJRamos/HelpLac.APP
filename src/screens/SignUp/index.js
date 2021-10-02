@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -17,7 +17,7 @@ import SignInput from '../../components/SignInput';
 
 import Api from '../../Api';
 
-import BarberLogo from '../../assets/barber.svg';
+import BarberLogo from '../../assets/teste.svg';
 import PersonIcon from '../../assets/person.svg';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
@@ -31,25 +31,25 @@ export default () => {
     const [passwordField, setPasswordField] = useState('');
 
     const handleSignClick = async () => {
-        if(nameField != '' && emailField != '' && passwordField != '') {
+        if (nameField != '' && emailField != '' && passwordField != '') {
             let res = await Api.signUp(nameField, emailField, passwordField);
-            
-            if(res.token) {
+
+            if (res.token) {
                 await AsyncStorage.setItem('token', res.token);
 
                 userDispatch({
                     type: 'setAvatar',
-                    payload:{
+                    payload: {
                         avatar: res.data.avatar
                     }
                 });
 
                 navigation.reset({
-                    routes:[{name:'MainTab'}]
+                    routes: [{ name: 'MainTab' }]
                 });
 
             } else {
-                alert("Erro: "+res.error);
+                alert("Erro: " + res.error);
             }
         } else {
             alert("Preencha os campos");
@@ -58,7 +58,7 @@ export default () => {
 
     const handleMessageButtonClick = () => {
         navigation.reset({
-            routes: [{name: 'SignIn'}]
+            routes: [{ name: 'SignIn' }]
         });
     }
 
@@ -71,21 +71,21 @@ export default () => {
                     IconSvg={PersonIcon}
                     placeholder="Digite seu nome"
                     value={nameField}
-                    onChangeText={t=>setNameField(t)}
+                    onChangeText={t => setNameField(t)}
                 />
 
                 <SignInput
                     IconSvg={EmailIcon}
                     placeholder="Digite seu e-mail"
                     value={emailField}
-                    onChangeText={t=>setEmailField(t)}
+                    onChangeText={t => setEmailField(t)}
                 />
 
                 <SignInput
                     IconSvg={LockIcon}
                     placeholder="Digite sua senha"
                     value={passwordField}
-                    onChangeText={t=>setPasswordField(t)}
+                    onChangeText={t => setPasswordField(t)}
                     password={true}
                 />
 

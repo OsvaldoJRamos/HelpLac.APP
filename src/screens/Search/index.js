@@ -9,6 +9,7 @@ import {
     Scroller,
 
     HeaderArea,
+    CommentInput,
     HeaderTitle,
     SearchButton,
 
@@ -25,12 +26,19 @@ export default () => {
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
+    const [productName, setProductName] = useState('');
 
-    const getProducts = async () => {
+    const setFilterProductName = (name) => {
+        console.log("FILTRO: " + name);
+        setProductName(name);
+        getProducts(name);
+    }
+
+    const getProducts = async (name = null) => {
         setLoading(true);
         setList([]);
 
-        let res = await Api.getProducts();
+        let res = await Api.getProducts(name);
         if (res) {
             setList(res.itens);
         } else {
@@ -56,7 +64,11 @@ export default () => {
             }>
 
                 <HeaderArea>
-                    <HeaderTitle numberOfLines={2}>Adicionados Recentemente</HeaderTitle>
+                    <CommentInput
+                        placeholder=" Escreva o nome do alimento"
+                        placeholderTextColor="#FFFFFF"
+                        value={productName}
+                        onChangeText={t => setFilterProductName(t)} />
                 </HeaderArea>
 
                 {loading &&

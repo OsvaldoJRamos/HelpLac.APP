@@ -67,7 +67,7 @@ const baseApiURL = 'https://helplacapi20210802192824.azurewebsites.net/api'
 export default {
     checkToken: async (token) => {
         var url = `${baseApiURL}/user/refresh`;
-
+        
         const req = await fetch(url, {
             method: 'POST',
             headers: {
@@ -76,6 +76,7 @@ export default {
             },
             body: JSON.stringify({ token })
         });
+
         const json = await req.json();
         return json;
     },
@@ -142,10 +143,14 @@ export default {
         // const json = await req.json();
         // return json;
     },
-    getProducts: async () => {
+    getProducts: async (productName) => {
         const token = await AsyncStorage.getItem('token');
 
-        const req = await fetch(`${baseApiURL}/product`);
+        var url = `${baseApiURL}/product`;
+        if (productName)
+            url += `?Name=` + productName;
+
+        const req = await fetch(url);
         const json = await req.json();
 
         return json;

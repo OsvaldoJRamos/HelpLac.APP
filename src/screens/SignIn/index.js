@@ -18,7 +18,7 @@ import Api from '../../Api';
 
 import SignInput from '../../components/SignInput';
 
-import BarberLogo from '../../assets/barber.svg';
+import BarberLogo from '../../assets/teste.svg';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 

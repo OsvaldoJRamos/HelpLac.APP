@@ -28,7 +28,7 @@ export const SearchButton = styled.TouchableOpacity`
 `;
 
 export const LocationArea = styled.View`
-    background-color: #4EADBE; 
+    background-color: #4EADBE;
     height: 60px;
     border-radius: 30px;
     flex-direction: row;

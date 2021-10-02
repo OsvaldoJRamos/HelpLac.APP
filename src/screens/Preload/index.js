@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../contexts/UserContext';
 import Api from '../../Api';
 
-import BarberLogo from '../../assets/barber.svg';
+import BarberLogo from '../../assets/teste.svg';
 
 export default () => {
     
@@ -18,25 +18,27 @@ export default () => {
             const token = await AsyncStorage.getItem('token');
             if(token) {
                 let res = await Api.checkToken(token);
-                if(res.token) {
+                if(res.token) { 
 
                     await AsyncStorage.setItem('token', res.token);
 
-                    userDispatch({
-                        type: 'setAvatar',
-                        payload:{
-                            avatar: res.data.avatar
-                        }
-                    });
+                    // userDispatch({
+                    //     type: 'setAvatar',
+                    //     payload:{
+                    //         avatar: res.data.avatar
+                    //     }
+                    // });
 
                     navigation.reset({
                         routes:[{name:'MainTab'}]
                     });
 
                 } else {
+                    console.log("ELSE 1");
                     navigation.navigate('SignIn');
                 }
             } else {
+                console.log("ELSE 2");
                 navigation.navigate('SignIn');
             }
         }

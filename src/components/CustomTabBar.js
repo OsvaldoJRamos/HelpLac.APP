@@ -37,7 +37,7 @@ const AvatarIcon = styled.Image`
 `;
 
 export default ({ state, navigation }) => {
-    const { state:user } = useContext(UserContext);
+    const { state: user } = useContext(UserContext);
 
     const goTo = (screenName) => {
         navigation.navigate(screenName);
@@ -45,24 +45,28 @@ export default ({ state, navigation }) => {
 
     return (
         <TabArea>
-            <TabItem onPress={()=>goTo('Home')}>
-                <HomeIcon style={{opacity: state.index===0? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+            <TabItem onPress={() => goTo('Home')}>
+                <HomeIcon style={{ opacity: state.index === 0 ? 1 : 0.5 }} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
-            <TabItem onPress={()=>goTo('Search')}>
+            {/* <TabItem onPress={()=>goTo('Search')}>
                 <SearchIcon style={{opacity: state.index===1? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
             <TabItemCenter onPress={()=>goTo('Appointments')}>
                 <TodayIcon width="32" height="32" fill="#4EADBE" />
+            </TabItemCenter> */}
+            <TabItemCenter onPress={() => goTo('Search')}>
+                <SearchIcon width="32" height="32" fill="#4EADBE" />
             </TabItemCenter>
-            <TabItem onPress={()=>goTo('Favorites')}>
+            {/* <TabItem onPress={()=>goTo('Favorites')}>
                 <FavoriteIcon style={{opacity: state.index===3? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            </TabItem>
-            <TabItem onPress={()=>goTo('Profile')}>
-                {user.avatar != '' ?
-                    <AvatarIcon source={{uri: user.avatar}} />
+            </TabItem> */}
+            <TabItem onPress={() => goTo('Profile')}>
+                <AccountIcon style={{ opacity: state.index === 4 ? 1 : 0.5 }} width="24" height="24" fill="#FFFFFF" />
+                {/* {user.avatar != '' ?
+                    <AvatarIcon source= {{ uri: user.avatar }} />
                     :
-                    <AccountIcon style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-                }
+                    <AccountIcon style={{ opacity: state.index === 4 ? 1 : 0.5 }} width="24" height="24" fill="#FFFFFF" />
+                } */}
             </TabItem>
         </TabArea>
     );

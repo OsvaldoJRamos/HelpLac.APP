@@ -52,6 +52,7 @@ export const CommentInput = styled.TextInput`
     margin-bottom: 10px;
     border-radius: 30px;
     width: 80%;
+    text-align: center;
 `;
 
 export const SendCommentButton = styled.TouchableOpacity`
@@ -59,6 +60,7 @@ export const SendCommentButton = styled.TouchableOpacity`
     background-color: #63C2D1;
     margin-bottom: 10px;
     border-radius: 50px;
+    margin-left: 20px;
 `;
 
 export default ({ productId, commentId }) => {

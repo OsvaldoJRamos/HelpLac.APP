@@ -16,6 +16,18 @@ export const HeaderArea = styled.View`
     justify-content: space-between;
     align-items: center;
 `;
+
+export const CommentInput = styled.TextInput`
+    padding: 5px;
+    align-items: flex-start;
+    font-size: 16px;
+    background-color: #4EADBE;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    width: 100%;
+    text-align: center;
+`;
+
 export const HeaderTitle = styled.Text`
     width: 250px;
     font-size: 24px;
